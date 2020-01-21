@@ -21,19 +21,41 @@
         <form id="form-non-conformite" class="needs-validation" novalidate>
 
             <div class="form-row justify-content-between">
-                <div class="form-group col-md-4">
-                    <label for="datePicker">Date</label>
-                    <input type="date" class="form-control" id="datePicker" required>
+                <div class="form-group col-md-5">
+                    <label for="nom">Nom complet du déclarant</label>
+                    <input type="text" class="form-control" placeholder="Prénom Nom" required name="nom">
                     <div class="invalid-feedback">
-                        Entrez une date valide.
+                        Entrer votre nom complet.
                     </div>
                 </div>
 
                 <div class="form-group col-md-5">
-                    <label for="nom">Nom complet</label>
-                    <input type="text" class="form-control" placeholder="Prénom Nom" required name="nom">
+                    <label for="provenance">Provenance</label>
+                    <div>
+                        <select id="provenance" name="provenance" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner une provenance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-between">
+                <div class="form-group col-md-5">
+                    <label for="datePicker">Date</label>
+                    <input type="date" class="form-control" id="datePicker" required>
                     <div class="invalid-feedback">
-                        Entrez votre nom complet.
+                        Entrer une date valide.
+                    </div>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="numRequete"># de requête
+                        <span class="text-muted">(optionnel)</span>
+                    </label>
+                    <input type="text" class="form-control" id="numRequete">
+                    <div class="invalid-feedback">
+                        Numéro de requête invalide.
                     </div>
                 </div>
             </div>
@@ -47,24 +69,8 @@
                             Sélectionner un département.
                         </div>
                     </div>
-
                 </div>
 
-
-                <div class="form-group col-md-5">
-                    <label for="provenance">Provenance</label>
-                    <div>
-                        <select id="provenance" name="provenance" class="custom-select" required> </select>
-                        <div class="invalid-feedback">
-                            Sélectionner une provenance.
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="form-row justify-content-between">
                 <div class="form-group col-md-5">
                     <label for="type">Type de non-conformité</label>
                     <div>
@@ -74,15 +80,6 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="numAcces"># de requête
-                        <span class="text-muted">(optionnel)</span>
-                    </label>
-                    <input type="text" class="form-control" id="numAcces" maxlength=10>
-                    <div class="invalid-feedback">
-                        Numéro d'accès invalide.
-                    </div>
                 </div>
             </div>
 
@@ -97,15 +94,6 @@
                     </div>
                     <div>
                         <input id="descriptifInput" name="descriptif" class="form-control d-none"> </input>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="ah223">
-                        <label class="custom-control-label" for="ah223">Cocher si AH-223</label>
                     </div>
                 </div>
             </div>
@@ -125,6 +113,15 @@
             <div class="form-group">
                 <label for="cause">Cause profonde</label>
                 <textarea class="form-control" id="cause" rows="3" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ah223">
+                        <label class="custom-control-label" for="ah223">Cocher si AH-223</label>
+                    </div>
+                </div>
             </div>
 
 
@@ -187,7 +184,8 @@
         ]
 
         const descriptifAnalytique = [
-            ""
+            "",
+            "test analytique"
         ]
 
         const descriptifPost = [
@@ -203,7 +201,7 @@
                 form.classList.add("was-validated");
                 e.preventDefault();
                 if (form.checkValidity()) {
-                    exportTableToCSV(inputs)
+                    exportTableToCSV(inputs);
                 }
             });
 
@@ -229,6 +227,13 @@
                 let descriptifSelect = document.getElementById('descriptifSelect');
                 inputField = document.getElementById("descriptifInput");
                 selectField = document.getElementById("descriptifList");
+                impactField = document.getElementById("impact");
+                causeField = document.getElementById("cause");
+
+                inputField.classList.add("d-none");
+                selectField.classList.remove("d-none");
+                impactField.removeAttribute("disabled");
+                causeField.removeAttribute("disabled");
 
                 let descriptifs;
                 if (e.target.value === "Autre") {
@@ -237,16 +242,14 @@
                 } else {
                     if (e.target.value === "Pré-analytique") {
                         descriptifs = descriptifsPre
-                        inputField.classList.add("d-none");
-                        selectField.classList.remove("d-none");
+                        impactField.setAttribute("disabled", "");
+                        causeField.setAttribute("disabled", "");
+
                     } else if (e.target.value === "Analytique") {
                         descriptifs = descriptifAnalytique;
-                        inputField.classList.add("d-none");
-                        selectField.classList.remove("d-none");
+
                     } else if (e.target.value === "Post-analytique") {
                         descriptifs = descriptifPost;
-                        inputField.classList.add("d-none");
-                        selectField.classList.remove("d-none");
                     }
 
                     descriptifSelect.options.length = 0;
@@ -258,7 +261,9 @@
         });
 
         function exportTableToCSV(inputs) {
-            let csv = "";
+
+            let csv = "Nom;Provenance;Date;#requête;Département;Type NC;Descriptif;Action immédiate;Impact;Cause;AH-223;\
+            Mesures à entreprendre pour corriger la situation;Échéancier (30 jours);Responsable;Échéancier (90 jours);Efficacité - Suivi\n";
             let ah223 = document.getElementById("ah223")
             ah223.value = ah223.checked ? "Oui" : "Non";
 
@@ -284,7 +289,7 @@
             let downloadLink = document.createElement("a");
 
             // File name
-            downloadLink.download = `Non_conformite_${new Date().toLocaleString()}.csv`;
+            downloadLink.download = `NC_${inputs[4].value}_${inputs[5].value}_${new Date().toLocaleString()}.csv`;
 
             // Create a link to the file
             downloadLink.href = window.URL.createObjectURL(csvFile);
