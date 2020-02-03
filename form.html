@@ -21,6 +21,14 @@
         <form id="form-non-conformite" class="needs-validation" novalidate>
 
             <div class="form-row justify-content-between">
+
+                <div class="form-group col-md-5">
+                    <label for="datePicker">Date</label>
+                    <input type="date" class="form-control" id="datePicker" required>
+                    <div class="invalid-feedback">
+                        Entrer une date valide.
+                    </div>
+                </div>
                 <div class="form-group col-md-5">
                     <label for="nom">Nom complet du déclarant</label>
                     <input type="text" class="form-control" placeholder="Prénom Nom" required name="nom">
@@ -28,7 +36,9 @@
                         Entrer votre nom complet.
                     </div>
                 </div>
+            </div>
 
+            <div class="form-row justify-content-between">
                 <div class="form-group col-md-5">
                     <label for="provenance">Provenance</label>
                     <div>
@@ -38,14 +48,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group col-md-5">
+                    <label for="departement">Département</label>
+                    <div>
+                        <select id="departement" name="departement" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner un département.
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-row justify-content-between">
                 <div class="form-group col-md-5">
-                    <label for="datePicker">Date</label>
-                    <input type="date" class="form-control" id="datePicker" required>
-                    <div class="invalid-feedback">
-                        Entrer une date valide.
+                    <label for="type">Type de non-conformité</label>
+                    <div>
+                        <select id="type" name="type" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner un type.
+                        </div>
                     </div>
                 </div>
 
@@ -57,29 +79,6 @@
                     <div class="invalid-feedback">
                         Numéro de requête invalide.
                     </div>
-                </div>
-            </div>
-
-            <div class="form-row justify-content-between">
-                <div class="form-group col-md-5">
-                    <label for="departement">Département</label>
-                    <div>
-                        <select id="departement" name="departement" class="custom-select" required> </select>
-                        <div class="invalid-feedback">
-                            Sélectionner un département.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-5">
-                    <label for="type">Type de non-conformité</label>
-                    <div>
-                        <select id="type" name="type" class="custom-select" required> </select>
-                        <div class="invalid-feedback">
-                            Sélectionner un type.
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -262,7 +261,7 @@
 
         function exportTableToCSV(inputs) {
 
-            let csv = "Nom;Provenance;Date;#requête;Département;Type NC;Descriptif;Action immédiate;Impact;Cause;AH-223;\
+            let csv = "Date;Nom;Provenance;Département;Type NC;#requête;Descriptif;Action immédiate;Impact;Cause;AH-223;\
             Mesures à entreprendre pour corriger la situation;Échéancier (30 jours);Responsable;Échéancier (90 jours);Efficacité - Suivi\n";
             let ah223 = document.getElementById("ah223")
             ah223.value = ah223.checked ? "Oui" : "Non";
