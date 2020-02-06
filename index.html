@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire de Non Conformité</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="py-5 text-center">
+            <h2>Formulaire de non conformité</h2>
+            <p class="lead">Remplir le formulaire de non-conformité et l'enregistrer dans le dossier "non-conformité"
+                sur votre bureau.</p>
+        </div>
+
+        <form id="form-non-conformite" class="needs-validation" novalidate>
+
+            <div class="form-row justify-content-between">
+
+                <div class="form-group col-md-5">
+                    <label for="datePicker">Date</label>
+                    <input type="date" class="form-control" id="datePicker" required>
+                    <div class="invalid-feedback">
+                        Entrer une date valide.
+                    </div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="nom">Nom complet du déclarant</label>
+                    <input type="text" class="form-control" placeholder="Prénom Nom" required name="nom">
+                    <div class="invalid-feedback">
+                        Entrer votre nom complet.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-between">
+                <div class="form-group col-md-5">
+                    <label for="provenance">Provenance</label>
+                    <div>
+                        <select id="provenance" name="provenance" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner une provenance.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="departement">Département</label>
+                    <div>
+                        <select id="departement" name="departement" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner un département.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row justify-content-between">
+                <div class="form-group col-md-5">
+                    <label for="type">Type de non-conformité</label>
+                    <div>
+                        <select id="type" name="type" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner un type.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="numRequete"># de requête
+                        <span class="text-muted">(optionnel)</span>
+                    </label>
+                    <input type="text" class="form-control" id="numRequete">
+                    <div class="invalid-feedback">
+                        Numéro de requête invalide.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="descriptifSelect">Descriptif</label>
+                    <div id="descriptifList">
+                        <select id="descriptifSelect" name="descriptif" class="custom-select" required> </select>
+                        <div class="invalid-feedback">
+                            Sélectionner un descriptif.
+                        </div>
+                    </div>
+                    <div>
+                        <input id="descriptifInput" name="descriptif" class="form-control d-none"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="actionImm">Action immédiate - Dérogation</label>
+                <textarea class="form-control" id="actionImm" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="impact">Impact/Étendue de la non-conformité</label>
+                <textarea class="form-control" id="impact" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cause">Cause profonde</label>
+                <textarea class="form-control" id="cause" rows="3" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ah223">
+                        <label class="custom-control-label" for="ah223">Cocher si AH-223</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group mt-5 col-md-10 offset-md-1">
+                <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2020 Marc-André Bourassa</p>
+    </footer>
+
+    <!-- Importation des données -->
+    <script type="text/javascript" src="assets/data.js"></script>
+    <script src="assets/app.js"></script>
+
+</body>
+
+</html>
