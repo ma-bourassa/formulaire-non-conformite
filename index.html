@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulaire de Non Conformité</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+        </a>
+    </nav>
 
-        <div class="py-5 text-center">
-            <h2>Formulaire de non conformité</h2>
-            <p class="lead">Remplir le formulaire de non-conformité et l'enregistrer dans le dossier "non-conformité"
-                sur votre bureau.</p>
-        </div>
+    <div class="container">
+        <nav class="py-3 navbar justify-content-center align-items-center">
+            <img class="mr-auto logo" src="/assets/img/logo.jpg" alt="CISSS Montérégie-Centre">
+            <div class="navbar-brand position-absolute">
+                <h2>Formulaire de non conformité</h2>
+            </div>
+        </nav>
 
         <form id="form-non-conformite" class="needs-validation" novalidate>
 
@@ -101,7 +106,7 @@
             <hr>
 
             <div class="form-group">
-                <label for="actionImm">Action immédiate - Dérogation</label>
+                <label for="actionImm">Action immédiate</label>
                 <textarea class="form-control" id="actionImm" rows="3" required></textarea>
             </div>
 
@@ -136,8 +141,10 @@
         <p class="mb-1">© 2020 Marc-André Bourassa</p>
     </footer>
 
-    <!-- Importation des données -->
-    <script type="text/javascript" src="assets/data.js"></script>
+
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/data.js"></script>
     <script src="assets/app.js"></script>
 
 </body>

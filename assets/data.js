@@ -1,7 +1,6 @@
-const departements = [
+let departements = [
     "",
     "Banque de sang",
-    "Biochimie",
     "Cytologie",
     "EBMD",
     "Hématologie",
@@ -13,10 +12,11 @@ const departements = [
     "Prélèvement",
     "Réception",
     "Sérologie",
+    "Biochimie",
 
 ]
 
-const provenances = [
+let provenances = [
     "",
     "Laboratoire",
     "Urgence",
@@ -41,7 +41,7 @@ const types = [
     "Autre"
 ]
 
-const descriptifsPre = [
+let descriptifsPre = [
     "",
     "Mauvais type tube ou milieu de transport inadéquat",
     "Quantité insuffisante ou inadéquate",
@@ -69,7 +69,7 @@ const descriptifsPre = [
 
 ]
 
-const descriptifAnalytique = [
+let descriptifAnalytique = [
     "",
     "Température zone à température contrôlée et équipements hors limites (alarme)",
     "Température non-documentée",
@@ -86,7 +86,7 @@ const descriptifAnalytique = [
 
 ]
 
-const descriptifPost = [
+let descriptifPost = [
     "",
     "Rapport émis au mauvais destinataire",
 

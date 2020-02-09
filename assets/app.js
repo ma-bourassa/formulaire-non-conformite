@@ -10,11 +10,17 @@ window.addEventListener("load", () => {
         }
     });
 
-
+    //Tri des données en ordre alphabétique
+    departements.sort((a, b) => a.localeCompare(b, 'fr'));
+    provenances.sort((a, b) => a.localeCompare(b, 'fr'));
+    descriptifsPre.sort((a, b) => a.localeCompare(b, 'fr'));
+    descriptifAnalytique.sort((a, b) => a.localeCompare(b, 'fr'));
+    descriptifPost.sort((a, b) => a.localeCompare(b, 'fr'));
+    
     //Remplissage des menus déroulants
     document.getElementById('datePicker').valueAsDate = new Date();
 
-    let departementSelect = document.getElementById('departement');
+    const departementSelect = document.getElementById('departement');
     departements.forEach((dep, index) => {
         departementSelect[index] = new Option(dep, dep)
     })

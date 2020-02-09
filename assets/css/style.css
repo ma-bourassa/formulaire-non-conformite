@@ -5,3 +5,8 @@
        .container {
            max-width: 960px;
        }
+
+       .logo {
+           max-width: 20%;
+           height: auto;
+       }
