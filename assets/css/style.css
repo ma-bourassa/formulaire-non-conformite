@@ -1,12 +1,12 @@
-       body {
-           background-color: #f8f9fa;
-       }
+body {
+  background-color: #f8f9fa;
+}
 
-       .container {
-           max-width: 960px;
-       }
+.container {
+  max-width: 960px;
+}
 
-       .logo {
-           max-width: 20%;
-           height: auto;
-       }
+.logo {
+  max-width: 20%;
+  height: auto;
+}
