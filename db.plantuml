@@ -1,0 +1,72 @@
+@startuml Non-conformité
+
+abstract BaseEntity {
+    createdBy:  User
+    creationDate: Date
+    updateBy: User
+    updateDate: Date
+    disabled: Boolean
+
+}
+
+Class Hopital {
+    +name: String
+    +code: String
+}
+
+class Provonance {
+    +name: String    
+}
+
+class Departement {
+    +name: String
+}
+
+class User {
+    roles: set<String>
+}
+
+Enum Role {
+    TECHNOLOGISTE
+    AC TECHNOLOGISTE
+    AC QUALITE
+}
+
+class Non_conformite {
+    +date: Date
+    +type: Type
+    +requete: String
+    +descriptif: Descriptif
+    +action_immediate: String
+    +impact: String
+    +cause: String
+    +ah_223L: Boolean
+}
+
+class suivi {
+    +action_corrective: String
+    +responsable: String
+    +echeancier_jour: int
+    +efficacite: String 
+}
+
+class Type {
+    +name: String
+    +Descriptif: Descriptif
+}
+
+class Descriptif {
+    +Type
+    +description: String
+}
+
+Hopital "1" -- "*" User
+Hopital "*" -- "1" Provonance
+Hopital "*" -- "1" Departement
+User "*" -- "*" Role
+User "1" -- "*" Non_conformite
+Non_conformite "*" -- "1" Type
+Non_conformite "1" -- "1" suivi
+Type "1" -- "*" Descriptif
+
+@enduml
